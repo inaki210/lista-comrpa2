@@ -31,3 +31,14 @@
     transform: rotate(360deg);
   }
 }
+
+/* Añadidos */
+
+.itemList:hover {
+  color: #ff0000;
+}
+
+.tachado {
+  color: #888888;
+  text-decoration: line-through;
+}

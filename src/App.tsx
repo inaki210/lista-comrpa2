@@ -1,8 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+//import logo from './logo.svg'
+import './App.css'
+import TopicList from './TopicList'
 
-const App: React.FC = () => {
+/*const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -21,6 +22,16 @@ const App: React.FC = () => {
       </header>
     </div>
   );
+}*/
+
+const App: React.FC = () => {
+  return (
+    <>
+      <TopicList topic="Comida" />
+      <TopicList topic="Material" />
+      <TopicList topic="Tareas" />
+    </>
+  )
 }
 
-export default App;
+export default App
