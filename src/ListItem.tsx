@@ -17,17 +17,19 @@ export class ItemList extends React.Component<Props, State> {
     const { textItem } = this.props
 
     return (
-      <li className="itemList" onClick={this.setMarked}>
-        {this.state.marked ? (
-          <span className="tachado">{textItem}</span>
-        ) : (
-          <span>{textItem}</span>
-        )}
-      </li>
+      <ul>
+        <li className="itemList" onClick={() => this.changeMarked()}>
+          {this.state.marked ? (
+            <span className="marked">{textItem}</span>
+          ) : (
+            <span>{textItem}</span>
+          )}
+        </li>
+      </ul>
     )
   }
 
-  setMarked = () => {
+  changeMarked = () => {
     this.setState({ marked: !this.state.marked })
   }
 }

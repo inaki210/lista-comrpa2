@@ -36,9 +36,14 @@
 
 .itemList:hover {
   color: #ff0000;
+  cursor: pointer;
 }
 
-.tachado {
+.marked {
   color: #888888;
   text-decoration: line-through;
+}
+
+.li-add {
+
 }
