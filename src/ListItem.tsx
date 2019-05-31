@@ -1,4 +1,9 @@
 import React from 'react'
+import {
+  InlineWrapper,
+  CloseButton,
+  MarkedText,
+} from './ui/styles/styledComponents'
 
 interface State {
   marked: boolean
@@ -6,6 +11,8 @@ interface State {
 
 interface Props {
   textItem: string
+  index: number
+  onDelete: (i: number) => void
 }
 
 export class ItemList extends React.Component<Props, State> {
@@ -14,18 +21,23 @@ export class ItemList extends React.Component<Props, State> {
   }
 
   render() {
-    const { textItem } = this.props
+    const { textItem, index, onDelete } = this.props
 
     return (
-      <ul>
-        <li className="itemList" onClick={() => this.changeMarked()}>
-          {this.state.marked ? (
-            <span className="marked">{textItem}</span>
-          ) : (
-            <span>{textItem}</span>
-          )}
-        </li>
-      </ul>
+      <li className="itemList">
+        <InlineWrapper>
+          <div onClick={() => this.changeMarked()}>
+            {this.state.marked ? (
+              <MarkedText className="tachado">{textItem}</MarkedText>
+            ) : (
+              <span>{textItem}</span>
+            )}
+          </div>
+          <CloseButton onClick={() => onDelete(index)}>
+            <span>X</span>
+          </CloseButton>
+        </InlineWrapper>
+      </li>
     )
   }
 

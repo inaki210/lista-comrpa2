@@ -1,5 +1,6 @@
 import React from 'react'
 import ItemList from './ListItem'
+import { WrapperTopic } from './ui/styles/styledComponents'
 
 interface State {
   items: string[]
@@ -18,13 +19,17 @@ export class TopicList extends React.Component<{}, State> {
     const { items, topic, newItemText } = this.state
 
     return (
-      <div>
+      <WrapperTopic>
         <h2>{topic}</h2>
 
         {items.length > 0 && (
           <ul>
             {items.map((item, index) => (
-              <ItemList textItem={item} />
+              <ItemList
+                textItem={item}
+                index={index}
+                onDelete={this.deleteItemIndex}
+              />
             ))}
           </ul>
         )}
@@ -37,7 +42,7 @@ export class TopicList extends React.Component<{}, State> {
         />
         <input type="button" onClick={this.addItem} value="Añadir" />
         <button onClick={this.addItem}>btnAñadir</button>
-      </div>
+      </WrapperTopic>
     )
   }
 
@@ -48,6 +53,11 @@ export class TopicList extends React.Component<{}, State> {
       const newArrayItems2 = [...oldArrayItems, newItem]
       this.setState({ items: newArrayItems2 })
     }
+  }
+  deleteItemIndex = (index: number) => {
+    const array = this.state.items
+    array.splice(index, 1)
+    this.setState({ items: array })
   }
 
   onChangeItem = (event: React.ChangeEvent<HTMLInputElement>) => {
